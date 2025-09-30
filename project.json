@@ -1,0 +1,13 @@
+{
+  "name": "Railway",
+  "description": "A decentralized app for seamless finance.",
+  "team": [
+    "0xchijioke"
+  ],
+  "tech_stack": ["Next.js", "Human.tech"],
+  "links": {
+    "github": "https://github.com/0xChijioke/railway",
+    "demo_video": "https://youtu.be/",
+    "live_demo": ""
+  }
+}
