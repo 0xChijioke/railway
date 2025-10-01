@@ -3,6 +3,7 @@ import { sepolia, mainnet, hardhat, arbitrum, gnosis } from "wagmi/chains";
 import { injected, walletConnect } from "wagmi/connectors";
 
 export const config = createConfig({
+  ssr: true, 
   chains: [sepolia, mainnet, arbitrum, gnosis],
   connectors: [
     injected(),
