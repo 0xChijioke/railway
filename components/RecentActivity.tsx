@@ -1,4 +1,3 @@
-// components/RecentActivity.tsx
 "use client";
 
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
@@ -32,7 +31,7 @@ export function RecentActivity({ tokenAddress, icon }: RecentActivityProps) {
     <Accordion type="single" collapsible className="mt-6 w-full">
       <AccordionItem value="activity">
         <AccordionTrigger className="text-sm font-semibold">
-          💸 Recent Activity {network?.name ?? "Unknown"}
+          💸 Recent Activity {/*  {network?.name ?? "Unknown"} */}
         </AccordionTrigger>
 
         <AccordionContent>
@@ -41,7 +40,7 @@ export function RecentActivity({ tokenAddress, icon }: RecentActivityProps) {
           ) : !txs?.length ? (
             <p className="text-sm text-muted-foreground">No recent transactions found</p>
           ) : (
-            <div className="space-y-2">
+            <div className="space-y-2 overflow-x-scroll">
               {txs.map((tx) => (
                 <div
                   key={tx.hash}
@@ -59,10 +58,16 @@ export function RecentActivity({ tokenAddress, icon }: RecentActivityProps) {
                       <span className="font-medium text-xs uppercase text-muted-foreground">
                         {(tx.from === address ? "Sent" : "Received")}
                       </span>
-                      <div className="text-[11px] space-x-2 text-muted-foreground truncate flex items-center gap-1">
-                        <Address address={tx.from as `0x${string}`} onlyEnsOrAddress /> 
-                        <span className="text-muted-foreground/70 text-xl">→</span>
-                        <Address address={tx.to as `0x${string}`} onlyEnsOrAddress />
+                      <div className="lg:text-[11px] text-xs space-x-2 text-muted-foreground truncate flex items-center gap-1">
+                        <span className={tx.from === address ? "hidden sm:inline" : ""}>
+                          <Address address={tx.from as `0x${string}`} onlyEnsOrAddress />
+                        </span>
+
+                        <span className="text-muted-foreground/70 hidden lg:inline text-xl">→</span>
+
+                        <span className={tx.to === address ? "hidden sm:inline" : ""}>
+                          <Address address={tx.to as `0x${string}`} onlyEnsOrAddress />
+                        </span>
                       </div>
                     </div>
                   </div>
